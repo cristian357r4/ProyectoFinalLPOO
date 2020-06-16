@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id paciente:</strong>
+  <%= @alimenticio_plan.id_paciente %>
+</p>
+
+<p>
+  <strong>Grupo alimentos:</strong>
+  <%= @alimenticio_plan.grupo_alimentos %>
+</p>
+
+<p>
+  <strong>Subgrupo alimentos:</strong>
+  <%= @alimenticio_plan.subgrupo_alimentos %>
+</p>
+
+<p>
+  <strong>Equivalente:</strong>
+  <%= @alimenticio_plan.equivalente %>
+</p>
+
+<p>
+  <strong>Desayuno:</strong>
+  <%= @alimenticio_plan.desayuno %>
+</p>
+
+<p>
+  <strong>Colacion1:</strong>
+  <%= @alimenticio_plan.colacion1 %>
+</p>
+
+<p>
+  <strong>Comida:</strong>
+  <%= @alimenticio_plan.comida %>
+</p>
+
+<p>
+  <strong>Colacion2:</strong>
+  <%= @alimenticio_plan.colacion2 %>
+</p>
+
+<p>
+  <strong>Cena:</strong>
+  <%= @alimenticio_plan.cena %>
+</p>
+
+<%= link_to 'Edit', edit_alimenticio_plan_path(@alimenticio_plan) %> |
+<%= link_to 'Back', alimenticio_planes_path %>

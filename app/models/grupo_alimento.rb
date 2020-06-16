@@ -1,0 +1,2 @@
+class GrupoAlimento < ApplicationRecord
+end

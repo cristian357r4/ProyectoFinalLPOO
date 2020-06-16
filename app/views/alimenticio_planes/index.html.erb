@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Alimenticio Planes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id paciente</th>
+      <th>Grupo alimentos</th>
+      <th>Subgrupo alimentos</th>
+      <th>Equivalente</th>
+      <th>Desayuno</th>
+      <th>Colacion1</th>
+      <th>Comida</th>
+      <th>Colacion2</th>
+      <th>Cena</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alimenticio_planes.each do |alimenticio_plan| %>
+      <tr>
+        <td><%= alimenticio_plan.id_paciente %></td>
+        <td><%= alimenticio_plan.grupo_alimentos %></td>
+        <td><%= alimenticio_plan.subgrupo_alimentos %></td>
+        <td><%= alimenticio_plan.equivalente %></td>
+        <td><%= alimenticio_plan.desayuno %></td>
+        <td><%= alimenticio_plan.colacion1 %></td>
+        <td><%= alimenticio_plan.comida %></td>
+        <td><%= alimenticio_plan.colacion2 %></td>
+        <td><%= alimenticio_plan.cena %></td>
+        <td><%= link_to 'Show', alimenticio_plan %></td>
+        <td><%= link_to 'Edit', edit_alimenticio_plan_path(alimenticio_plan) %></td>
+        <td><%= link_to 'Destroy', alimenticio_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Alimenticio Plan', new_alimenticio_plan_path %>

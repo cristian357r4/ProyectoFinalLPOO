@@ -1,0 +1,62 @@
+<%= form_with(model: alimenticio_plan, local: true) do |form| %>
+  <% if alimenticio_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(alimenticio_plan.errors.count, "error") %> prohibited this alimenticio_plan from being saved:</h2>
+
+      <ul>
+      <% alimenticio_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :id_paciente, "Paciente" %>
+    <%= form.number_field :id_paciente %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grupo_alimentos %>
+    <%= form.number_field :grupo_alimentos %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subgrupo_alimentos %>
+    <%= form.number_field :subgrupo_alimentos %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equivalente %>
+    <%= form.number_field :equivalente %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desayuno %>
+    <%= form.number_field :desayuno %>
+  </div>
+
+  <div class="field">
+    <%= form.label :colacion1 %>
+    <%= form.number_field :colacion1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comida %>
+    <%= form.number_field :comida %>
+  </div>
+
+  <div class="field">
+    <%= form.label :colacion2 %>
+    <%= form.number_field :colacion2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cena %>
+    <%= form.number_field :cena %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

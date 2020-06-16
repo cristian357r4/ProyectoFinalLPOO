@@ -1,0 +1,2 @@
+class AlimenticioPlan < ApplicationRecord
+end

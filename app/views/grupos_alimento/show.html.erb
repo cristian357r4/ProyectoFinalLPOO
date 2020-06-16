@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @grupo_alimento.nombre %>
+</p>
+
+<p>
+  <strong>Ingrediente:</strong>
+  <%= @grupo_alimento.ingrediente %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @grupo_alimento.cantidad %>
+</p>
+
+<%= link_to 'Edit', edit_grupo_alimento_path(@grupo_alimento) %> |
+<%= link_to 'Back', grupos_alimento_path %>
