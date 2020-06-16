@@ -1,2 +1,0 @@
-class AlimenticioPlan < ApplicationRecord
-end

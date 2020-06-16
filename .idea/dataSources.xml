@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Rails ProyectoLPOO: development" uuid="4f581d6e-8a7f-4056-93e8-bf82b91262f4">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/proyecto_lpoo</jdbc-url>
-    </data-source>
     <data-source source="LOCAL" name="Rails ProyectoLPOO: test" uuid="ba9c70b6-e957-4309-8d0b-9cb876bf5a7a">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
@@ -16,6 +8,22 @@
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1:3306/dblpoo</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails ProyectoLPOO: production" uuid="0520c458-a360-4447-8164-2f9a081a3d23">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/dblpoo</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails ProyectoLPOO: development" uuid="dc707e73-caaa-4d7f-a214-eb12f7350d75">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/proyecto_lpoo</jdbc-url>
     </data-source>
   </component>
 </project>
