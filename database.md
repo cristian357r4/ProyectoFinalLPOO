@@ -212,3 +212,19 @@ create table health_styles
         foreign key (id_paciente) references patients_information (id_paciente)
 );
 
+
+
+class CreatePersonas < ActiveRecord::Migration[5.2]
+  def change
+    create_table :personas do |t|
+      t.string :nombre
+      t.string :a_paterno
+      t.string :a_materno
+      t.string :sexo
+      t.string :telefono
+      t.string :correo
+
+      t.timestamps
+    end
+  end
+end
