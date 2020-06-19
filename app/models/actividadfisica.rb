@@ -1,0 +1,3 @@
+class ActividadFisica < ApplicationRecord
+
+end

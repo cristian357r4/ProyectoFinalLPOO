@@ -193,7 +193,7 @@ create table consultas
     folio       int  null,
     fecha       date null,
     id_signos   int  null,
-    constraint consulta_info_pacientes_id_paciente_fk
+    constraint consulta_info_pacieperntes_id_paciente_fk
         foreign key (id_paciente) references patients_information (id_paciente),
     constraint consultas_signos_vitales_id_signos_fk
         foreign key (id_signos) references signos_vitales (id_signos)
@@ -227,4 +227,22 @@ class CreatePersonas < ActiveRecord::Migration[5.2]
       t.timestamps
     end
   end
+end
+
+
+
+#para hacer joins entre as tablas
+Paciente.joins(:persona)
+
+
+
+class Nutriologo < ApplicationRecord
+  #user_item ejemplo
+  belongs_to :persona
+  accepts_nested_attributes_for :persona
+
+  validates :cedula_profesional, :login , presence: true
+
+
+  has_secure_password
 end
