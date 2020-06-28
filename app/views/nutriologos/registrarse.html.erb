@@ -62,8 +62,26 @@
     border-color: #ccc;
   }
 
-</style>
+  .btn-register {
+    background-color: #1CB94E;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+    border-color: #1CB94A;
+  }
 
+  .btn-register:hover,
+  .btn-register:focus {
+    color: #fff;
+    background-color: #1CA347;
+    border-color: #1CA347;
+  }
+
+</style>
 
 <div class="container">
   <div class="row">
@@ -72,7 +90,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-6">
-              <p href="#" class="active" id="login-form-link">Iniciar</p>
+              <a href="#" id="register-form-link">Register</a>
             </div>
           </div>
           <hr>
@@ -80,18 +98,45 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <!--         TODO     action de login-->
-              <%= form_for(:session, :html => {role: "form"}, url: login_path) do |nutriologo| %>
+              <%= form_with(model: @persona, url: guardar_nutriologo_path, id: "formulario_nuriologo", local: true) do |persona| %>
                 <div class="form-group">
-                  <%= nutriologo.text_field :login, placeholder: "Login de Usuario", class: "form-control" %>
+                  <%= persona.text_field :nombre, placeholder: "Introduzaca su Nombre", class: "form-control", autocomplete: "off" %>
+
                 </div>
                 <div class="form-group">
-                  <%= nutriologo.password_field :password, placeholder: "Contraseña", class: "form-control", autocomplete: "off" %>
+                  <%= persona.text_field :a_paterno, placeholder: "Introduzaca su Apellido Paterno", class: "form-control", autocomplete: "off" %>
                 </div>
+                <div class="form-group">
+                  <%= persona.text_field :a_materno, placeholder: "Introduzaca su Apellido Materno", class: "form-control", autocomplete: "off" %>
+                </div>
+                <div class="form-group dropdown">
+                  <%= persona.label :sexo, "Seleccione su genero: " %>
+                  <%= persona.select :sexo, options_for_select([["Hombre", "H"], ["Mujer", "M"]],) %>
+                </div>
+                <div class="form-group">
+
+                  <%= persona.telephone_field(:telefono, placeholder: "Telefono", class: "form-control") %>
+
+                  <%#= persona_fields.text_field :telefono, placeholder: "Introduzca su numero telefonico", class: "form-control", autocomplete: "off" %>
+                </div>
+                <div class="form-group">
+                  <%= persona.email_field(:correo, placeholder: "Introduzca su correo Electronico", class: "form-control", autocomplete: "off") %>
+                </div>
+                <%= persona.fields_for :nutriologo, Nutriologo.new do |nutriologo_fileds| %>
+                  <div class="form-group">
+                    <%= nutriologo_fileds.text_field :cedula_profesional, placeholder: "Introduzca su cedula profesional", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= nutriologo_fileds.text_field :login, placeholder: "Introduzca su nombre de usuario", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= nutriologo_fileds.password_field :password, placeholder: "Introduzca su contraseña", class: "form-control", autocomplete: "off" %>
+                  </div>
+                <% end %>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                      <%= nutriologo.submit "Ingresar", class: "form-control btn btn-primary" %>
+                      <%= persona.submit "Registrarse", class: "form-control btn btn-primary" %>
                     </div>
                   </div>
                 </div>
@@ -101,11 +146,8 @@
                       <%= link_to ' Regresar', root_path, class: "form-control btn btn-danger glyphicon glyphicon-chevron-left" %>
                     </div>
                   </div>
-
                 </div>
               <% end %>
-
-              <!--TODO aqui va el action del registro-->
             </div>
           </div>
         </div>
