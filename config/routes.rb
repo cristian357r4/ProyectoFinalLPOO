@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # por default imprime esto
   # root GET    /
   #             home#index
-  root to: 'home#index'
+  root :to => 'home#index'
 
   #estilo rutas que puede manera rails de forma autonoma no se pone el alias deben nombrarse los metodos
   # con los nombre por convencio asi es posible que rails identifique autoaticamente el que se tiene que
