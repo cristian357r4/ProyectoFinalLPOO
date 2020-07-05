@@ -5,9 +5,9 @@
 
   .panel-login {
     border-color: #ccc;
-    -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   }
 
   .panel-login > .panel-heading {
@@ -20,6 +20,7 @@
   .panel-login > .panel-heading a {
     text-decoration: none;
     color: #666;
+
     font-weight: bold;
     font-size: 15px;
     -webkit-transition: all 0.1s linear;
@@ -122,7 +123,7 @@
                 <div class="form-group">
                   <%= persona.email_field(:correo, placeholder: "Introduzca su correo Electronico", class: "form-control", autocomplete: "off") %>
                 </div>
-                <%= persona.fields_for :nutriologo, Nutriologo.new do |nutriologo_fileds| %>
+                <%= persona.fields_for :nutriologo do |nutriologo_fileds| %>
                   <div class="form-group">
                     <%= nutriologo_fileds.text_field :cedula_profesional, placeholder: "Introduzca su cedula profesional", class: "form-control" %>
                   </div>
@@ -131,6 +132,10 @@
                   </div>
                   <div class="form-group">
                     <%= nutriologo_fileds.password_field :password, placeholder: "Introduzca su contraseña", class: "form-control", autocomplete: "off" %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= nutriologo_fileds.password_field :password_confirm, placeholder: "Introduzca su contraseña", class: "form-control", autocomplete: "off" %>
                   </div>
                 <% end %>
                 <div class="form-group">
