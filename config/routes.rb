@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'nutriologo', to: 'nutriologos#index' #nutriologos_path
   match 'registrarse', to: 'nutriologos#registrarse', via: :get, :as => :registrar_nutriologo
   match 'registrarse/nuevo', to: 'nutriologos#crear', via: :post, :as => :guardar_nutriologo
+  match 'nutriologo/:id/editar', to: 'nutriologos#editar', via: :get, :as => :editar_nutriologo
+  match 'nutriologo/update', to: 'nutriologos#update', via: :post, :as => :update_nutriologo
   # match 'login' => 'sessions#new', via: :get, :as => :crear_sesion
   match 'login' => 'sessions#create', via: :post
   match 'logout' => 'sessions#destroy', via: :delete

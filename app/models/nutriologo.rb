@@ -5,17 +5,18 @@ class Nutriologo < ApplicationRecord
   # tiene el persona_id referencia a la tabla persona
   # persona_id es foreign_key
 
-  has_secure_password
-  validates :cedula_profesional, length: { is: 10, message: 'Error faltan algunos caracteres verifique los datos' },
-                                 uniqueness: {
-                                   message: 'Esta la cedula ya fue registrada'
+  validates :cedula_profesional, uniqueness: {
+      message: 'Esta la cedula ya fue registrada'
 
-                                 }
-  validates :login, length: { minimum: 3, maximum: 10 },
-                    uniqueness: {
-                      case_sensitive: false,
-                      message: ' Usuario ya exite elija uno distinto'
-                    }
+  }, length: {is: 10, message: 'La cedula profesional debe tener 10 digitos'}
+
+  validates :login, uniqueness: {
+      case_sensitive: false,
+      message: ' Usuario ya exite elija uno distinto'
+  }, length: {minimum: 3, maximum: 50}
+
+
+  has_secure_password
 end
 
 # create table nutriologos

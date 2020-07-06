@@ -1,7 +1,10 @@
 class NutriologosController < ApplicationController
-  #estos datos pertenecen a  una persona
-  #esta funcion es llamada por el controlador : se expecifica aqui nutriologo#registrarse
+  # estos datos pertenecen a  una persona
+  # esta funcion es llamada por el controlador : se expecifica aqui nutriologo#registrarse
   # y renderiza la pagina con el mismo nombre dentro de la carpeta vistas
+  def index
+  end
+
   def registrarse
     @persona = Persona.new
     @persona.build_nutriologo
@@ -13,16 +16,21 @@ class NutriologosController < ApplicationController
       if @persona.save
         format.html { redirect_to root_path, notice: 'Nutriologo registrado' }
       else
+
         format.html { redirect_to registrar_nutriologo_path, notice: 'No se registro' }
       end
-
     end
+  end
+
+  def editar
+    @persona = Persona.find(params[:id])
 
   end
 
-  def index
+  def update
 
   end
+
 
   private
 
@@ -30,5 +38,4 @@ class NutriologosController < ApplicationController
     params.require(:persona).permit(:nombre, :a_paterno, :a_materno, :sexo, :telefono, :correo,
                                     nutriologo_attributes: [:id, :persona_id, :cedula_profesional, :login, :password])
   end
-
 end

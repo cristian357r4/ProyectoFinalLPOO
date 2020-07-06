@@ -1,3 +1,6 @@
+<!--TODO Falta ver por que no se muestran los dato del nutriologo-->
+
+<%= render "layouts/navbar" %>
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -5,7 +8,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-6">
-              <a href="#" id="register-form-link">Register</a>
+              <a href="#" id="register-form-link">Editar Datos</a>
             </div>
           </div>
           <hr>
@@ -15,13 +18,6 @@
           <div class="row">
             <div class="col-lg-12">
               <%= form_with(model: @persona, url: guardar_nutriologo_path, id: "formulario_nuriologo", local: true, validate: true) do |persona| %>
-                <% if @persona.errors.any? %>
-                  <ul>
-                    <% @persona.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                    <% end %>
-                  </ul>
-                <% end %>
                 <div class="form-group">
                   <%= persona.text_field :nombre, placeholder: "Introduzaca su Nombre", class: "form-control", autocomplete: "off", required: true %>
 
@@ -45,6 +41,7 @@
                 <div class="form-group">
                   <%= persona.email_field(:correo, placeholder: "Introduzca su correo Electronico", class: "form-control", autocomplete: "off", validate: {uniqueness: {case_sensitive: false, message: 'El correo electronico Ya ha sido registrado'}}, required: true) %>
                 </div>
+
                 <%= persona.fields_for :nutriologo do |nutriologo_fileds| %>
                   <div class="form-group">
                     <%= nutriologo_fileds.text_field :cedula_profesional, placeholder: "Introduzca su cedula profesional", class: "form-control", required: true %>
@@ -66,7 +63,7 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                      <%= persona.submit "Registrarse", class: "form-control btn btn-primary" %>
+                      <%= persona.submit "Actualizar datos", class: "form-control btn btn-primary" %>
                     </div>
                   </div>
                 </div>

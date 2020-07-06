@@ -13,6 +13,8 @@ gem 'puma', '~> 3.11'
 gem 'bootstrap-sass', '>= 3.4.1'
 
 gem 'jquery-rails'
+#validaciones en lado del cliente
+gem 'client_side_validations', '~> 17.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
