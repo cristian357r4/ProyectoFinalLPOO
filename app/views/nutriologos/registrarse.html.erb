@@ -1,7 +1,88 @@
+<% if @persona.errors.any? %>
+  <ul>
+    <% @persona.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="#" id="register-form-link">Register</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <%= form_with(model: @persona, url: guardar_nutriologo_path, id: "formulario_nuriologo", local: true) do |persona| %>
+                <div class="form-group">
+                  <%= persona.text_field :nombre, placeholder: "Introduzaca su Nombre", class: "form-control", autocomplete: "off", required: true %>
+
+                </div>
+                <div class="form-group">
+                  <%= persona.text_field :a_paterno, placeholder: "Introduzaca su Apellido Paterno", class: "form-control", autocomplete: "off", required: true %>
+                </div>
+                <div class="form-group">
+                  <%= persona.text_field :a_materno, placeholder: "Introduzaca su Apellido Materno", class: "form-control", autocomplete: "off", required: true %>
+                </div>
+                <div class="form-group dropdown">
+                  <%= persona.label :sexo, "Seleccione su genero: " %>
+                  <%= persona.select :sexo, options_for_select([["Hombre", "H"], ["Mujer", "M"]],) %>
+                </div>
+                <div class="form-group">
+
+                  <%= persona.telephone_field(:telefono, placeholder: "Telefono", class: "form-control") %>
+
+                  <%#= persona_fields.text_field :telefono, placeholder: "Introduzca su numero telefonico", class: "form-control", autocomplete: "off" %>
+                </div>
+                <div class="form-group">
+                  <%= persona.email_field(:correo, placeholder: "Introduzca su correo Electronico", class: "form-control", autocomplete: "off", required: true) %>
+                </div>
+                <%= persona.fields_for :nutriologo do |nutriologo_fileds| %>
+                  <div class="form-group">
+                    <%= nutriologo_fileds.text_field :cedula_profesional, placeholder: "Introduzca su cedula profesional", class: "form-control", required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= nutriologo_fileds.text_field :login, placeholder: "Introduzca su nombre de usuario", class: "form-control", required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= nutriologo_fileds.password_field :password, placeholder: "Introduzca su contraseña", class: "form-control", autocomplete: "off", required: true %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= nutriologo_fileds.password_field :password_confirm, placeholder: "Confirme su contraseña", class: "form-control", autocomplete: "off", required: true %>
+                  </div>
+                <% end %>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <%= persona.submit "Registrarse", class: "form-control btn btn-primary" %>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <%= link_to ' Regresar', root_path, class: "form-control btn btn-danger glyphicon glyphicon-chevron-left" %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <style type="text/css">
-  body {
-    padding-top: 90px;
-  }
 
   .panel-login {
     border-color: #ccc;
@@ -83,80 +164,3 @@
   }
 
 </style>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="panel panel-login">
-        <div class="panel-heading">
-          <div class="row">
-            <div class="col-xs-6">
-              <a href="#" id="register-form-link">Register</a>
-            </div>
-          </div>
-          <hr>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-12">
-              <%= form_with(model: @persona, url: guardar_nutriologo_path, id: "formulario_nuriologo", local: true) do |persona| %>
-                <div class="form-group">
-                  <%= persona.text_field :nombre, placeholder: "Introduzaca su Nombre", class: "form-control", autocomplete: "off" %>
-
-                </div>
-                <div class="form-group">
-                  <%= persona.text_field :a_paterno, placeholder: "Introduzaca su Apellido Paterno", class: "form-control", autocomplete: "off" %>
-                </div>
-                <div class="form-group">
-                  <%= persona.text_field :a_materno, placeholder: "Introduzaca su Apellido Materno", class: "form-control", autocomplete: "off" %>
-                </div>
-                <div class="form-group dropdown">
-                  <%= persona.label :sexo, "Seleccione su genero: " %>
-                  <%= persona.select :sexo, options_for_select([["Hombre", "H"], ["Mujer", "M"]],) %>
-                </div>
-                <div class="form-group">
-
-                  <%= persona.telephone_field(:telefono, placeholder: "Telefono", class: "form-control") %>
-
-                  <%#= persona_fields.text_field :telefono, placeholder: "Introduzca su numero telefonico", class: "form-control", autocomplete: "off" %>
-                </div>
-                <div class="form-group">
-                  <%= persona.email_field(:correo, placeholder: "Introduzca su correo Electronico", class: "form-control", autocomplete: "off") %>
-                </div>
-                <%= persona.fields_for :nutriologo do |nutriologo_fileds| %>
-                  <div class="form-group">
-                    <%= nutriologo_fileds.text_field :cedula_profesional, placeholder: "Introduzca su cedula profesional", class: "form-control" %>
-                  </div>
-                  <div class="form-group">
-                    <%= nutriologo_fileds.text_field :login, placeholder: "Introduzca su nombre de usuario", class: "form-control" %>
-                  </div>
-                  <div class="form-group">
-                    <%= nutriologo_fileds.password_field :password, placeholder: "Introduzca su contraseña", class: "form-control", autocomplete: "off" %>
-                  </div>
-
-                  <div class="form-group">
-                    <%= nutriologo_fileds.password_field :password_confirm, placeholder: "Introduzca su contraseña", class: "form-control", autocomplete: "off" %>
-                  </div>
-                <% end %>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                      <%= persona.submit "Registrarse", class: "form-control btn btn-primary" %>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                      <%= link_to ' Regresar', root_path, class: "form-control btn btn-danger glyphicon glyphicon-chevron-left" %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

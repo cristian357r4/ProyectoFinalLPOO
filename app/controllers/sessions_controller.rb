@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   #  sessions#new
   def new
 
-
   end
 
   def create
@@ -14,12 +13,12 @@ class SessionsController < ApplicationController
     nutriologo = Nutriologo.find_by(login: params[:session][:login].downcase)
     if nutriologo && nutriologo.authenticate(params[:session][:password])
       session[:persona_id] = nutriologo.persona_id
-      flash[:succes] = "Bienvenido"
+      flash[:succes] = 'Bienvenido'
       #redirect_to nutriologos_path(nutriologo)   #verificar la direccio a la que redirecciona
       redirect_to nutriologo_path
 
     else
-      flash.now[:danger] = "Usuario o contraseña Incorrecta"
+      flash[:danger] = 'Usuario o contraseña Incorrecta'
       #pagina que va a pintar en la aplicacion
       render 'new'
 
@@ -28,7 +27,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:persona_id] = nil
-    flash[:succes] = "Vuelva Pronto"
+    flash[:succes] = 'Vuelva Pronto'
     redirect_to root_path
 
   end

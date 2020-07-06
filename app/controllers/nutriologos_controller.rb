@@ -13,7 +13,7 @@ class NutriologosController < ApplicationController
       if @persona.save
         format.html { redirect_to root_path, notice: 'Nutriologo registrado' }
       else
-        format.html { redirect_to root_path, notice: 'No se registro' }
+        format.html { redirect_to registrar_nutriologo_path, notice: 'No se registro' }
       end
 
     end

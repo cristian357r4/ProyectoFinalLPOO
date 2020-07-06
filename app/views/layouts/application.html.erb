@@ -9,7 +9,11 @@
 </head>
 
 <body>
-<%= flash_messages %>
+<% flash.each do |name, msg| %>
+  <ul>
+    <li><%= msg %></li>
+  </ul>
+<% end %>
 <%= yield %>
 </body>
 <div class="blockquote-footer">
