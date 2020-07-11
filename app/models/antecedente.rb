@@ -1,0 +1,2 @@
+class Antecedente < ApplicationRecord
+end

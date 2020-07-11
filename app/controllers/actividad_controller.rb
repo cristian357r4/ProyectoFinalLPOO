@@ -1,0 +1,2 @@
+class ActividadController < ApplicationController
+end

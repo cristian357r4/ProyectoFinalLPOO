@@ -1,0 +1,48 @@
+<%= form_with(model: alimento, local: true) do |form| %>
+  <% if alimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(alimento.errors.count, "error") %> prohibited this alimento from being saved:</h2>
+
+      <ul>
+        <% alimento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caraceristica, "Comentario" %>
+    <%#= form.text_field :caraceristica %>
+    <%= form.text_area(:caraceristica, size: "24x6", placeholder: "Describa el grupo o proporcione informacion adicional") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :frecuencia, "Frecuencia recomendada" %>
+    <%= form.text_field :frecuencia, placeholder: "Ejemplo:\n4-6 raciones" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :racionp, "Peso de cada Racion" %>
+    <%= form.text_field :racionp, placeholder: "Ejemplo: 200-250 gr/ml" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caseram, "Medidas Caseras" %>
+    <%= form.text_area(:caseram, placeholder: "Ejemplo:\n1 Plato normal\n3-4 rebanadas o un panecillo", size: "24x6") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nutrientes %>
+    <%= form.text_field :nutrientes, placeholder: "Ejemplo: Glucidos, proteinas, gluten" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Crear Nuevo Grupo Alimenticio" %>
+  </div>
+<% end %>

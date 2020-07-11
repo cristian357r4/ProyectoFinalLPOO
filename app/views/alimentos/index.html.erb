@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Grupos Alimenticios</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Caraceristica</th>
+    <th>Frecuencia</th>
+    <th>Racionp</th>
+    <th>Caseram</th>
+    <th>Nutrientes</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @alimentos.each do |alimento| %>
+    <tr>
+      <td><%= link_to alimento.nombre, alimento %></td>
+      <td><%= alimento.caraceristica %></td>
+      <td><%= alimento.frecuencia %></td>
+      <td><%= alimento.racionp %></td>
+      <td><%= alimento.caseram %></td>
+      <td><%= alimento.nutrientes %></td>
+      <td><%= link_to 'Editar', edit_alimento_path(alimento) %></td>
+      <td><%= link_to 'Eliminar', alimento, method: :delete, data: {confirm: 'Estas seguro?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Grupo de Alimentos', new_alimento_path %>

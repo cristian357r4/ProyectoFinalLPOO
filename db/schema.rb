@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_093656) do
+ActiveRecord::Schema.define(version: 2020_07_11_043415) do
 
-  create_table "actividades_fisica", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "actividades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "infousuario_id"
     t.string "descripcion"
     t.string "frecuencia"
@@ -25,7 +25,18 @@ ActiveRecord::Schema.define(version: 2020_06_18_093656) do
     t.index ["infousuario_id"], name: "index_actividades_fisica_on_infousuario_id", unique: true
   end
 
-  create_table "antecedentes_paciente", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "alimentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "nombre"
+    t.text "caraceristica"
+    t.string "frecuencia"
+    t.string "racionp"
+    t.string "caseram"
+    t.string "nutrientes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "antecedentes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "infousuario_id"
     t.string "diabetes"
     t.string "obesidad"
@@ -38,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_093656) do
     t.index ["infousuario_id"], name: "index_antecedentes_paciente_on_infousuario_id", unique: true
   end
 
-  create_table "biometrias_ematica", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "biometrias", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "infousuario_id"
     t.string "globulos_rojos"
     t.string "globulos_blancos"
@@ -51,11 +62,24 @@ ActiveRecord::Schema.define(version: 2020_06_18_093656) do
     t.index ["infousuario_id"], name: "index_biometrias_ematica_on_infousuario_id", unique: true
   end
 
-  create_table "consuta", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "comidas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "descripcion"
+  end
+
+  create_table "consultas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.date "fecha_consulta"
   end
 
-  create_table "estilos_vida", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "dietas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "comida_id"
+    t.integer "paciente_id"
+    t.integer "alimento_id"
+    t.integer "subalimento_id"
+    t.integer "cantidad"
+    t.string "nutrientes"
+  end
+
+  create_table "estilos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "infousuario_id"
     t.string "descripcion"
     t.string "frecuencia"
@@ -96,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_093656) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "problemas_salud", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "problemas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "infousuario_id"
     t.string "diarrea"
     t.string "nauseas"
@@ -109,7 +133,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_093656) do
     t.index ["infousuario_id"], name: "index_problemas_salud_on_infousuario_id", unique: true
   end
 
-  create_table "quimicas_sanguinea", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "quimicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "infousuario_id"
     t.string "nitronitrogenourea"
     t.string "glocosa"
@@ -134,12 +158,17 @@ ActiveRecord::Schema.define(version: 2020_06_18_093656) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "actividades_fisica", "pacientes", column: "infousuario_id"
-  add_foreign_key "antecedentes_paciente", "pacientes", column: "infousuario_id"
-  add_foreign_key "biometrias_ematica", "pacientes", column: "infousuario_id"
-  add_foreign_key "estilos_vida", "pacientes", column: "infousuario_id"
+  create_table "subalimentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "descripcion"
+    t.integer "alimento_id"
+  end
+
+  add_foreign_key "actividades", "pacientes", column: "infousuario_id"
+  add_foreign_key "antecedentes", "pacientes", column: "infousuario_id"
+  add_foreign_key "biometrias", "pacientes", column: "infousuario_id"
+  add_foreign_key "estilos", "pacientes", column: "infousuario_id"
   add_foreign_key "nutriologos", "personas"
   add_foreign_key "pacientes", "personas"
-  add_foreign_key "problemas_salud", "pacientes", column: "infousuario_id"
-  add_foreign_key "quimicas_sanguinea", "pacientes", column: "infousuario_id"
+  add_foreign_key "problemas", "pacientes", column: "infousuario_id"
+  add_foreign_key "quimicas", "pacientes", column: "infousuario_id"
 end

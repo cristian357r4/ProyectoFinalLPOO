@@ -1,0 +1,2 @@
+class Quimica < ApplicationRecord
+end

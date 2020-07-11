@@ -1,0 +1,2 @@
+class Biometria < ApplicationRecord
+end

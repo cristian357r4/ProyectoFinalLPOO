@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @subalimento.descripcion %>
+</p>
+
+<p>
+  <strong>Alimento:</strong>
+  <%= @subalimento.alimento.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_subalimento_path(@subalimento) %> |
+<%= link_to 'Volver', subalimentos_path %>

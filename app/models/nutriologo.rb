@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Nutriologo < ApplicationRecord
+  before_save { self.login = login.downcase }
   belongs_to :persona
   # tiene el persona_id referencia a la tabla persona
   # persona_id es foreign_key
@@ -10,10 +11,11 @@ class Nutriologo < ApplicationRecord
 
   }, length: {is: 10, message: 'La cedula profesional debe tener 10 digitos'}
 
-  validates :login, uniqueness: {
-      case_sensitive: false,
-      message: ' Usuario ya exite elija uno distinto'
-  }, length: {minimum: 3, maximum: 50}
+  validates_uniqueness_of :login, :case_sensitive => false, :message => 'El usuario ya existe elija otro nombre'
+  # validates :login, uniqueness: {
+  #     case_sensitive: false,
+  #     message: ' Usuario ya exite elija uno distinto'
+  # }, length: {minimum: 3, maximum: 50}
 
 
   has_secure_password

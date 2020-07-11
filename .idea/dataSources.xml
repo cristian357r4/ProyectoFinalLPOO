@@ -25,5 +25,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1:3306/proyecto_lpoo</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="nutritionsmart@localhost" uuid="a71e9703-26d3-46fe-a19e-b3e2492e3332">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://localhost:3306/nutritionsmart</jdbc-url>
+    </data-source>
   </component>
 </project>

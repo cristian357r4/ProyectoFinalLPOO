@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
+  # before_action :require_user
+  helper_method :current_user, :require_user, :logged_in?
+
 
   def current_user
     if session[:persona_id]
-      @current_user ||= Nutriologo.find(session[:persona_id])
+      @current_persona ||= Persona.where(id: session[:persona_id]).first
+      @nutriologo ||= Nutriologo.where(persona_id: session[:persona_id]).first
     end
   end
 
@@ -19,4 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def disable_nav
+    @disable_nav = true
+  end
 end

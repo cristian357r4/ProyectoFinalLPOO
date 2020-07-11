@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @alimento.nombre %>
+</p>
+
+<p>
+  <strong>Caraceristica:</strong>
+  <%= @alimento.caraceristica %>
+</p>
+
+<p>
+  <strong>Frecuencia:</strong>
+  <%= @alimento.frecuencia %>
+</p>
+
+<p>
+  <strong>Racionp:</strong>
+  <%= @alimento.racionp %>
+</p>
+
+<p>
+  <strong>Caseram:</strong>
+  <%= @alimento.caseram %>
+</p>
+
+<p>
+  <strong>Nutrientes:</strong>
+  <%= @alimento.nutrientes %>
+</p>
+
+<%= link_to 'Editar', edit_alimento_path(@alimento) %> |
+<%= link_to 'Regresar', alimentos_path %>

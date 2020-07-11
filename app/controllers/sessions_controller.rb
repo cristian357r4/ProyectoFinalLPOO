@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   #debe Nombrarse en Plurar del nombe del modelo  y con la primera Mayuscula
   #conjunto de metodos nombrados en las rutas
   #  sessions#new
+  before_action :disable_nav, only: :new
   def new
 
   end
@@ -11,9 +12,10 @@ class SessionsController < ApplicationController
     #params[:session][:login]       recupera el login "xazak"
     #debugger
     nutriologo = Nutriologo.find_by(login: params[:session][:login].downcase)
-    if nutriologo && nutriologo.authenticate(params[:session][:password])
+    if nutriologo&.authenticate(params[:session][:password])
+      #session[:persona_id] = nutriologo.persona_id ------ esta variable guarda unicamente el persona_id=7  por ejemplo
       session[:persona_id] = nutriologo.persona_id
-      flash[:succes] = 'Bienvenido'
+      flash[:success] = 'Bienvenido'
       #redirect_to nutriologos_path(nutriologo)   #verificar la direccio a la que redirecciona
       redirect_to nutriologo_path
 
@@ -27,7 +29,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:persona_id] = nil
-    flash[:succes] = 'Vuelva Pronto'
+    flash[:success] = 'Vuelva Pronto'
     redirect_to root_path
 
   end

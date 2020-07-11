@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :comidas
+  resources :subalimentos
+  resources :alimentos
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #  primer parametro como lo encontramos en la aplicacion segundo parametro: (home_controller) home#login este
   # parametro se agrega como funcion en el controller
@@ -25,7 +28,8 @@ Rails.application.routes.draw do
   match 'nutriologo/update', to: 'nutriologos#update', via: :post, :as => :update_nutriologo
   # match 'login' => 'sessions#new', via: :get, :as => :crear_sesion
   match 'login' => 'sessions#create', via: :post
-  match 'logout' => 'sessions#destroy', via: :delete
+  # match 'logout' => 'sessions#destroy', via: :delete
+  delete 'logout', to: 'sessions#destroy'
 
 
   #match "/validar_usuario" => "persononas#validar_usuario", via: :post, :as => :validar_usuario

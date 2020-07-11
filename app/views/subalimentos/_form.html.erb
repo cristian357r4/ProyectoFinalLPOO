@@ -1,0 +1,27 @@
+<%= form_with(model: subalimento, local: true) do |form| %>
+  <% if subalimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subalimento.errors.count, "error") %> prohibited this subalimento from being saved:</h2>
+
+      <ul>
+        <% subalimento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_field :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alimento_id, "Seleccione el Grupo de Alimentos al que pertenece" %>
+    <%= form.select(:alimento_id, Alimento.all.collect { |e| [e.nombre, e.id] }, {include_blank: 'Seleccione uno'}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Registrar" %>
+  </div>
+<% end %>

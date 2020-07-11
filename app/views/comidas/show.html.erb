@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @comida.descripcion %>
+</p>
+
+<%= link_to 'Editar', edit_comida_path(@comida) %> |
+<%= link_to 'Volver', comidas_path %>
