@@ -14,6 +14,8 @@
   <div class="field">
     <%= form.label :persona_id %>
     <%= form.text_field :persona_id %>
+    <%#= form.select(:persona_id, Persona.joins(:paciente).collect { |e| [e.nombre, e.id]},{include_blank: 'Seleccione a un paciente'}) %>
+
   </div>
 
   <div class="field">
@@ -39,7 +41,7 @@
   <div class="field">
     <%= form.label :birthdate %>
     <%#= form.date_select :birthdate %>
-    <%= form.text_field :birthdate %>
+    <%= form.text_field :birthdate, autocomplete: false %>
   </div>
 
   <div class="actions">

@@ -2,7 +2,8 @@
 
 <p>
   <strong>Paciente:</strong>
-  <%= @dieta.paciente_id %>
+  <%#= @dieta.paciente_id %>
+  <%= @dieta.paciente.persona.nombre %>
 </p>
 
 <p>
@@ -12,23 +13,23 @@
 
 <p>
   <strong>Alimento:</strong>
-  <%= @dieta.alimento_id %>
+  <%= @dieta.alimento.nombre %>
 </p>
 
 <p>
   <strong>Subalimento:</strong>
-  <%= @dieta.subalimento_id %>
+  <%= @dieta.subalimento.descripcion %>
 </p>
 
 <p>
-  <strong>Cantidad:</strong>
+  <strong>Numero de Raciones:</strong>
   <%= @dieta.cantidad %>
 </p>
 
 <p>
-  <strong>Estado:</strong>
+  <strong>Estado [Activo:1/Inactivo:2] : </strong>
   <%= @dieta.estado %>
 </p>
 
-<%= link_to 'Edit', edit_dieta_path(@dieta) %> |
-<%= link_to 'Back', dietas_path %>
+<%= link_to 'Editar', edit_dieta_path(@dieta) %> |
+<%= link_to 'Volver', dietas_path %>
