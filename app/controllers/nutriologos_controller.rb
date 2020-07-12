@@ -10,7 +10,6 @@ class NutriologosController < ApplicationController
   end
 
   def registrarse
-    # @disable_nav = true
     @persona = Persona.new
     @persona.build_nutriologo
   end
@@ -35,7 +34,6 @@ class NutriologosController < ApplicationController
   def update
 
   end
-
 
   private
 

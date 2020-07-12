@@ -33,6 +33,7 @@
                 <div class="form-group">
                   <%= persona.email_field(:correo, placeholder: "Introduzca su correo Electronico", class: "form-control", autocomplete: "off", validate: {uniqueness: {case_sensitive: false, message: 'El correo electronico Ya ha sido registrado'}}, required: true) %>
                 </div>
+<!--                #commit anterior tenia un ",Nutriologo.new" despues de :nutriologo-->
                 <%= persona.fields_for :nutriologo do |nutriologo_fileds| %>
                   <div class="form-group">
                     <%= nutriologo_fileds.text_field :cedula_profesional, placeholder: "Introduzca su cedula profesional", class: "form-control", required: true %>
