@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Nombre:</strong>
   <%= @alimento.nombre %>
+</p>
+<p>
+  <strong>Imagen</strong>
+  <% if @alimento.image.attached? %>
+    <%= image_tag(@alimento.image, class: 'img-rounded', width: '200px', height: '200px') %>
+  <% end %>
 </p>
 
 <p>

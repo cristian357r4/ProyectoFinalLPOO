@@ -1,12 +1,5 @@
-$theme-colors: (
-        "primary": #62c67a,
-        "secondary": #cacaca,
-        "success": #37c5e9,
-        "info": #2541c1,
-        "warning": #d0db13,
-        "danger": #c42142,
-        "light": #ececec,
-        "dark": #222222
-);
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.tcontainer {
+  background-color: oldlace;
+}

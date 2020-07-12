@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AlimentosController < ApplicationController
   before_action :require_user
-  before_action :set_alimento, only: [:show, :edit, :update, :destroy]
+  before_action :set_alimento, only: %i[show edit update destroy]
 
   # GET /alimentos
   # GET /alimentos.json
@@ -10,8 +12,7 @@ class AlimentosController < ApplicationController
 
   # GET /alimentos/1
   # GET /alimentos/1.json
-  def show
-  end
+  def show; end
 
   # GET /alimentos/new
   def new
@@ -19,8 +20,7 @@ class AlimentosController < ApplicationController
   end
 
   # GET /alimentos/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /alimentos
   # POST /alimentos.json
@@ -61,6 +61,10 @@ class AlimentosController < ApplicationController
       format.html { redirect_to alimentos_url, notice: 'El grupo de Alimentos fue Eliminado correctamente' }
       format.json { head :no_content }
     end
+  rescue ActiveRecord::StatementInvalid => e
+    flash[:danger] = 'No se pudo eliminar el registro por que esta en uso'
+    flash[:warning] = 'Verifique la seccion "Subgrupo  de Alimentos" y elimine los registros dependientes'
+    redirect_to alimentos_path
   end
 
   private
@@ -72,6 +76,6 @@ class AlimentosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def alimento_params
-    params.require(:alimento).permit(:nombre, :caraceristica, :frecuencia, :racionp, :caseram, :nutrientes)
+    params.require(:alimento).permit(:nombre, :caraceristica, :frecuencia, :racionp, :caseram, :nutrientes, :image)
   end
 end

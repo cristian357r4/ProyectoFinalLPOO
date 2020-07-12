@@ -41,7 +41,10 @@
     <%= form.label :nutrientes %>
     <%= form.text_field :nutrientes, placeholder: "Ejemplo: Glucidos, proteinas, gluten" %>
   </div>
-
+  <div class="field">
+    <%= form.label "Imagen" %>
+    <%= form.file_field :image%>
+  </div>
   <div class="actions">
     <%= form.submit "Crear Nuevo Grupo Alimenticio" %>
   </div>

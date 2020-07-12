@@ -1,4 +1,4 @@
-<%= form_with(model: comida, local: true) do |form| %>
+<%= form_with(model: comida, local: true, class: 'form-group') do |form| %>
   <% if comida.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comida.errors.count, "error") %> prohibited this comida from being saved:</h2>
@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :descripcion %>
-    <%= form.text_field :descripcion %>
+  <div class="field form-group">
+    <%= form.label :descripcion, role: 'label' %>
+    <%= form.text_field :descripcion, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Registrar' %>
+    <%= form.submit 'Registrar' , class: 'btn btn-success'%>
   </div>
 <% end %>

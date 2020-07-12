@@ -1,35 +1,51 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Grupos Alimenticios</h1>
-
-<table>
-  <thead>
-  <tr>
-    <th>Nombre</th>
-    <th>Caraceristica</th>
-    <th>Frecuencia</th>
-    <th>Racionp</th>
-    <th>Caseram</th>
-    <th>Nutrientes</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @alimentos.each do |alimento| %>
+<div class="tcontainer">
+  <table class="table table-hover">
+    <thead>
     <tr>
+      <th>Nombre</th>
+      <th>Imagen</th>
+      <th>Caraceristica</th>
+      <th>Frecuencia</th>
+      <th>Racionp</th>
+      <th>Caseram</th>
+      <th>Nutrientes</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @alimentos.each do |alimento| %>
+      <% if alimento.image.attached? %>
+        <tr>
+      <% else %>
+        <tr class="danger">
+      <% end %>
       <td><%= link_to alimento.nombre, alimento %></td>
+      <td>
+        <% if alimento.image.attached? %>
+          <%= image_tag(alimento.image, class: 'img-rounded', width: '200px', height: '100px') %>
+        <% else %>
+          <%= link_to 'Agrege una imagen', edit_alimento_path(alimento) %>
+        <% end %>
+
+      </td>
       <td><%= alimento.caraceristica %></td>
       <td><%= alimento.frecuencia %></td>
       <td><%= alimento.racionp %></td>
       <td><%= alimento.caseram %></td>
       <td><%= alimento.nutrientes %></td>
-      <td><%= link_to 'Editar', edit_alimento_path(alimento) %></td>
-      <td><%= link_to 'Eliminar', alimento, method: :delete, data: {confirm: 'Estas seguro?'} %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+      <td><%= link_to('Editar', edit_alimento_path(alimento), class: 'btn btn-info')%></td>
+<!--      TODO validar eliminar completo o pedir informacion-->
+      <td><%= link_to 'Eliminar', alimento, method: :delete, data: {confirm: 'Estas seguro?'}, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
 
 <br>
 

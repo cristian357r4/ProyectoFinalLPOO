@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_043415) do
+ActiveRecord::Schema.define(version: 2020_07_12_025840) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "actividades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "infousuario_id"
@@ -71,12 +92,16 @@ ActiveRecord::Schema.define(version: 2020_07_11_043415) do
   end
 
   create_table "dietas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "comida_id"
-    t.integer "paciente_id"
-    t.integer "alimento_id"
-    t.integer "subalimento_id"
+    t.bigint "paciente_id"
+    t.bigint "comida_id"
+    t.bigint "alimento_id"
+    t.bigint "subalimento_id"
     t.integer "cantidad"
     t.string "nutrientes"
+    t.index ["alimento_id"], name: "fk_rails_e8090303af"
+    t.index ["comida_id"], name: "fk_rails_76d3b9ec09"
+    t.index ["paciente_id"], name: "fk_rails_b9f587d0ff"
+    t.index ["subalimento_id"], name: "fk_rails_4ac410902c"
   end
 
   create_table "estilos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -160,15 +185,22 @@ ActiveRecord::Schema.define(version: 2020_07_11_043415) do
 
   create_table "subalimentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "descripcion"
-    t.integer "alimento_id"
+    t.bigint "alimento_id"
+    t.index ["alimento_id"], name: "fk_rails_1ff126d2e1"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "actividades", "pacientes", column: "infousuario_id"
   add_foreign_key "antecedentes", "pacientes", column: "infousuario_id"
   add_foreign_key "biometrias", "pacientes", column: "infousuario_id"
+  add_foreign_key "dietas", "alimentos"
+  add_foreign_key "dietas", "comidas"
+  add_foreign_key "dietas", "pacientes"
+  add_foreign_key "dietas", "subalimentos"
   add_foreign_key "estilos", "pacientes", column: "infousuario_id"
   add_foreign_key "nutriologos", "personas"
   add_foreign_key "pacientes", "personas"
   add_foreign_key "problemas", "pacientes", column: "infousuario_id"
   add_foreign_key "quimicas", "pacientes", column: "infousuario_id"
+  add_foreign_key "subalimentos", "alimentos"
 end
