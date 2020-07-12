@@ -11,8 +11,9 @@ gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.11'
 # bootstrap
 gem 'bootstrap-sass', '>= 3.4.1'
-
+#gema para el calendar
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 #validaciones en lado del cliente
 gem 'client_side_validations', '~> 17.0'
 # Use SCSS for stylesheets
