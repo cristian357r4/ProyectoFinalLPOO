@@ -4,3 +4,7 @@
 jQuery ->
   $('#paciente_birthdate').datepicker
     dateFormat: 'yy-mm-dd'
+    changeMonth: true
+    changeYear: true
+    yearRange: '1970:2020'
+    maxDate: '-1M'

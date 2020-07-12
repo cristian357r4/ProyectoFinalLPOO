@@ -13,35 +13,35 @@
 
   <div class="field">
     <%= form.label :paciente_id %>
-    <%= form.text_field :paciente_id %>
+    <%= form.select(:paciente_id, Paciente.joins(:persona).collect { |e| [e.persona_id, e.id] }, {include_blank: 'Seleccione a un paciente'}) %>
   </div>
 
   <div class="field">
     <%= form.label :comida_id %>
-    <%= form.text_field :comida_id %>
+    <%= form.select(:comida_id, Comida.all.collect { |e| [e.descripcion, e.id] }, {include_blank: 'Elija el tiempo de Comida'}) %>
   </div>
 
   <div class="field">
     <%= form.label :alimento_id %>
-    <%= form.text_field :alimento_id %>
+    <%= form.select(:alimento_id, Alimento.all.collect { |e| [e.nombre, e.id] }, {include_blank: 'Elija el grupo de alimentos'}) %>
   </div>
 
   <div class="field">
     <%= form.label :subalimento_id %>
-    <%= form.text_field :subalimento_id %>
+    <%= form.select(:subalimento_id, Subalimento.all.collect { |e| [e.descripcion, e.id] }, {include_blank: 'Elija el subgrupo de alimentos'}) %>
   </div>
 
   <div class="field">
-    <%= form.label :cantidad %>
+    <%= form.label :cantidad, 'Numero de Porciones' %>
     <%= form.number_field :cantidad %>
   </div>
 
   <div class="field">
     <%= form.label :estado %>
-    <%= form.number_field :estado %>
+    <%= form.select :estado, options_for_select([["Activo", 1], ["Inactivo", 2]],) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Guardar' %>
   </div>
 <% end %>

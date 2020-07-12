@@ -24,9 +24,9 @@
       <td><%= dieta.subalimento_id %></td>
       <td><%= dieta.cantidad %></td>
       <td><%= dieta.estado %></td>
-      <td><%= link_to 'Show', dieta %></td>
-      <td><%= link_to 'Edit', edit_dieta_path(dieta) %></td>
-      <td><%= link_to 'Destroy', dieta, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td><%= link_to 'Ver', dieta %></td>
+      <td><%= link_to 'Editar', edit_dieta_path(dieta) %></td>
+      <td><%= link_to 'Eliminar', dieta, method: :delete, data: {confirm: 'Estas seguro?'} %></td>
     </tr>
   <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Dieta', new_dieta_path %>
+<%= link_to 'Registrar nueva dieta', new_dieta_path %>
