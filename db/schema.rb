@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_025840) do
+ActiveRecord::Schema.define(version: 2020_07_12_063626) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_025840) do
     t.bigint "alimento_id"
     t.bigint "subalimento_id"
     t.integer "cantidad"
-    t.string "nutrientes"
+    t.integer "estado"
     t.index ["alimento_id"], name: "fk_rails_e8090303af"
     t.index ["comida_id"], name: "fk_rails_76d3b9ec09"
     t.index ["paciente_id"], name: "fk_rails_b9f587d0ff"
@@ -129,8 +129,9 @@ ActiveRecord::Schema.define(version: 2020_07_12_025840) do
     t.float "talla"
     t.float "imc"
     t.float "porcentage_grasa"
-    t.date "fecha_registro"
-    t.integer "edad"
+    t.date "birthdate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["persona_id"], name: "index_pacientes_on_persona_id", unique: true
   end
 

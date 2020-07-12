@@ -1,6 +1,6 @@
 class ComidasController < ApplicationController
   before_action :require_user
-  before_action :set_comida, only: [:show, :edit, :update, :destroy]
+  before_action :set_comida, only: %i[:show, :edit, :update, :destroy]
 
   # GET /comidas
   # GET /comidas.json

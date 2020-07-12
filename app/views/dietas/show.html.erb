@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Paciente:</strong>
+  <%= @dieta.paciente_id %>
+</p>
+
+<p>
+  <strong>Comida:</strong>
+  <%= @dieta.comida_id %>
+</p>
+
+<p>
+  <strong>Alimento:</strong>
+  <%= @dieta.alimento_id %>
+</p>
+
+<p>
+  <strong>Subalimento:</strong>
+  <%= @dieta.subalimento_id %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @dieta.cantidad %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @dieta.estado %>
+</p>
+
+<%= link_to 'Edit', edit_dieta_path(@dieta) %> |
+<%= link_to 'Back', dietas_path %>

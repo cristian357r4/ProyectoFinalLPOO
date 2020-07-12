@@ -1,0 +1,47 @@
+<%= form_with(model: paciente, local: true) do |form| %>
+  <% if paciente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
+
+      <ul>
+        <% paciente.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :persona_id %>
+    <%= form.text_field :persona_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :peso %>
+    <%= form.text_field :peso %>
+  </div>
+
+  <div class="field">
+    <%= form.label :talla %>
+    <%= form.text_field :talla %>
+  </div>
+
+  <div class="field">
+    <%= form.label :imc %>
+    <%= form.text_field :imc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :porcentage_grasa %>
+    <%= form.text_field :porcentage_grasa %>
+  </div>
+  <!--  formato de la fecha: 2020-06-17 01:28:56-->
+  <div class="field">
+    <%= form.label :birthdate %>
+    <%= form.date_select :birthdate %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

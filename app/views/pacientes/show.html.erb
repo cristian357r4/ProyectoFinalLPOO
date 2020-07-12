@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Persona:</strong>
+  <%= @paciente.persona_id %>
+</p>
+
+<p>
+  <strong>Peso:</strong>
+  <%= @paciente.peso %>
+</p>
+
+<p>
+  <strong>Talla:</strong>
+  <%= @paciente.talla %>
+</p>
+
+<p>
+  <strong>Imc:</strong>
+  <%= @paciente.imc %>
+</p>
+
+<p>
+  <strong>Porcentage grasa:</strong>
+  <%= @paciente.porcentage_grasa %>
+</p>
+
+<p>
+  <strong>Birthdate:</strong>
+  <%= @paciente.birthdate %>
+</p>
+
+<%= link_to 'Edit', edit_paciente_path(@paciente) %> |
+<%= link_to 'Back', pacientes_path %>

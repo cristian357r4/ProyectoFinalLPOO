@@ -2,7 +2,8 @@
 class Persona < ApplicationRecord
   before_save do
     self.nombre = nombre.downcase,
-        self.a_materno = a_materno.dowcase, self.a_paterno = a_paterno.downcase
+        self.a_materno = a_materno.dowcase, self.a_paterno = a_paterno.downcase,
+        self.sexo.upercase, self.correo.downcase
   end
   # item en ejemplo
   # attr_accessor :id_persona ,:nombre, :a_paterno, :a_materno, :correo, :sexo, :telefono

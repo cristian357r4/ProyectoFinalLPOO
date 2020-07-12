@@ -1,0 +1,47 @@
+<%= form_with(model: dieta, local: true) do |form| %>
+  <% if dieta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dieta.errors.count, "error") %> prohibited this dieta from being saved:</h2>
+
+      <ul>
+        <% dieta.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :paciente_id %>
+    <%= form.text_field :paciente_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comida_id %>
+    <%= form.text_field :comida_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alimento_id %>
+    <%= form.text_field :alimento_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subalimento_id %>
+    <%= form.text_field :subalimento_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cantidad %>
+    <%= form.number_field :cantidad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado %>
+    <%= form.number_field :estado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
