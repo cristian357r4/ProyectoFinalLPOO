@@ -1,0 +1,66 @@
+<%= @nut.each do |form| %>
+  <div class="field">
+    <p>
+      <%= form.persona.nombre %>
+    </p>
+  </div>
+  <div class="field">
+    <p>
+
+      <%= form.persona.a_paterno %>
+    </p>
+
+  </div>
+
+  <div class="field">
+    <p>
+      <%= form.persona.a_materno %>
+    </p>
+    <p>hola</p>
+  </div>
+
+  <!--  <div class="field">-->
+  <%#= form.label :sexo %>
+  <%#= form.text_field :sexo , onlyread: true%>
+  <!--  </div>-->
+
+  <!--  <div class="field">-->
+  <%#= form.label :telefono %>
+  <%#= form.text_field :telefono %>
+  <!--  </div>-->
+
+  <!--  <div class="field">-->
+  <%#= form.label :correo %>
+  <%#= form.text_field :correo %>
+  <!--  </div>-->
+  <%#= form.fields_for :paciente do |form| %>
+  <!--    <div class="field">-->
+  <%#= form.label :peso %>
+  <%#= form.text_field :peso%>
+  <!--    </div>-->
+
+  <!--    <div class="field">-->
+  <%#= form.label :talla%>
+  <%#= form.text_field :talla%>
+  <!--    </div>-->
+
+  <!--    <div class="field">-->
+  <%#= form.label :imc%>
+  <%#= form.text_field :imc%>
+  <!--    </div>-->
+
+  <!--    <div class="field">-->
+  <%#= form.label :porcentage_grasa, 'Porcetage de Grasa Corporal'%>
+  <%#= form.text_field :porcentage_grasa%>
+  <!--    </div>-->
+
+  <!--    <div class="field">-->
+  <%#= form.label :birthdate%>
+  <%#= form.date_select :birthdate%>
+  <!--    </div>-->
+  <%# end %>
+
+  <!--  <div class="actions">-->
+  <%#= form.submit %>
+  <!--  </div>-->
+<% end %>

@@ -1,0 +1,74 @@
+<%= form_with(model: persona, local: true) do |form| %>
+  <% if persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+
+      <ul>
+        <% persona.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre, 'Nombre' %>
+    <%= form.text_field :nombre, onlyread: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a_paterno, 'Apellido Paterno' %>
+    <%= form.text_field :a_paterno, onlyread: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :a_materno, 'Apellido Materno' %>
+    <%= form.text_field :a_materno, onlyread: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sexo %>
+    <%= form.text_field :sexo, onlyread: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefono %>
+    <%= form.text_field :telefono %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correo %>
+    <%= form.text_field :correo %>
+  </div>
+  <!--  atributos del paciente-->
+  <%= form.fields_for :paciente do |form| %>
+    <div class="field">
+      <%= form.label :peso %>
+      <%= form.text_field :peso %>
+    </div>
+
+    <div class="field">
+      <%= form.label :talla %>
+      <%= form.text_field :talla %>
+    </div>
+
+    <div class="field">
+      <%= form.label :imc %>
+      <%= form.text_field :imc %>
+    </div>
+
+    <div class="field">
+      <%= form.label :porcentage_grasa, 'Porcetage de Grasa Corporal' %>
+      <%= form.text_field :porcentage_grasa %>
+    </div>
+
+    <div class="field">
+      <%= form.label :birthdate %>
+      <%= form.date_select :birthdate %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

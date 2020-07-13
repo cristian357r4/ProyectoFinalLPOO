@@ -1,0 +1,3 @@
+class BiometriaController < ApplicationController
+
+end

@@ -1,76 +1,83 @@
 class PacientesController < ApplicationController
   before_action :require_user
-  before_action :set_paciente, only: [:show, :edit, :update, :destroy]
+  before_action :set_persona, only: [:show, :edit, :update, :destroy]
 
-  # GET /pacientes
-  # GET /pacientes.json
+  # GET /personas
+  # GET /personas.json
   def index
-    @pacientes = Paciente.all
+    @personas = Persona.joins(:paciente)
   end
 
-  # GET /pacientes/1
-  # GET /pacientes/1.json
+  # GET /personas/1
+  # GET /personas/1.json
   def show
   end
 
-  # GET /pacientes/new
+  # GET /personas/new
   def new
-    @paciente = Paciente.new
+    @persona = Persona.new
+    @persona.build_paciente
   end
 
-  # GET /pacientes/1/edit
+  # GET /personas/1/edit
   def edit
   end
 
-  # POST /pacientes
-  # POST /pacientes.json
+  # POST /personas
+  # POST /personas.json
   def create
-    @paciente = Paciente.new(paciente_params)
+    @persona = Persona.new(persona_params)
 
     respond_to do |format|
-      if @paciente.save
-        format.html { redirect_to @paciente, notice: 'Paciente was successfully created.' }
-        format.json { render :show, status: :created, location: @paciente }
+      if @persona.save
+        format.html { redirect_to pacientes_path, notice: 'Persona was successfully created.' }
+        format.json { render :show, status: :created, location: pacientes_path }
       else
         format.html { render :new }
-        format.json { render json: @paciente.errors, status: :unprocessable_entity }
+        format.json { render json: @persona.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /pacientes/1
-  # PATCH/PUT /pacientes/1.json
+  # PATCH/PUT /personas/1
+  # PATCH/PUT /personas/1.json
   def update
     respond_to do |format|
-      if @paciente.update(paciente_params)
-        format.html { redirect_to @paciente, notice: 'Paciente was successfully updated.' }
-        format.json { render :show, status: :ok, location: @paciente }
+      if @persona.update(persona_params)
+        format.html { redirect_to @persona, notice: 'Persona was successfully updated.' }
+        format.json { render :show, status: :ok, location: @persona }
       else
         format.html { render :edit }
-        format.json { render json: @paciente.errors, status: :unprocessable_entity }
+        format.json { render json: @persona.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /pacientes/1
-  # DELETE /pacientes/1.json
+  # DELETE /personas/1
+  # DELETE /personas/1.json
   def destroy
-    @paciente.destroy
+    @persona.destroy
     respond_to do |format|
-      format.html { redirect_to pacientes_url, notice: 'Paciente was successfully destroyed.' }
+      format.html { redirect_to personas_url, notice: 'Persona was successfully destroyed.' }
       format.json { head :no_content }
     end
+  rescue ActiveRecord::StatementInvalid => e
+    flash[:danger] = 'No se puede eliminar el registro esta en uso'
+    redirect_to comidas_path
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_paciente
-    @paciente = Paciente.find(params[:id])
+  def set_persona
+    @persona = Persona.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
-  def paciente_params
-    params.require(:paciente).permit(:persona_id, :peso, :talla, :imc, :porcentage_grasa, :birthdate)
+  def persona_params
+    params.require(:persona).permit(:nombre, :a_paterno, :a_materno, :sexo, :telefono, :correo,
+                                    paciente_attributes: [:id, :peso, :talla, :imc, :porcentage_grasa,
+                                                          :birthdate])
   end
+
 end

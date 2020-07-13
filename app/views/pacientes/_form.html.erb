@@ -1,50 +1,75 @@
-<%= form_with(model: paciente, local: true) do |form| %>
-  <% if paciente.errors.any? %>
+<%= form_with(model: @persona, url: pacientes_path, id: "formulario_paciente", local: true, validate: true) do |builder| %>
+  <% if @persona.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
+      <h2><%= pluralize(@persona.errors.count, "error") %> impide que se guarde correctamente:</h2>
 
       <ul>
-        <% paciente.errors.full_messages.each do |message| %>
+        <% @persona.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= form.label :persona_id %>
-    <%= form.text_field :persona_id %>
-    <%#= form.select(:persona_id, Persona.joins(:paciente).collect { |e| [e.nombre, e.id]},{include_blank: 'Seleccione a un paciente'}) %>
-
+    <%= builder.label :nombre, 'Nombre' %>
+    <%= builder.text_field :nombre %>
   </div>
 
   <div class="field">
-    <%= form.label :peso %>
-    <%= form.text_field :peso %>
+    <%= builder.label :a_paterno, 'Apellido Paterno' %>
+    <%= builder.text_field :a_paterno %>
   </div>
 
   <div class="field">
-    <%= form.label :talla %>
-    <%= form.text_field :talla %>
+    <%= builder.label :a_materno, 'Apellido Materno' %>
+    <%= builder.text_field :a_materno %>
   </div>
 
   <div class="field">
-    <%= form.label :imc %>
-    <%= form.text_field :imc %>
+    <%= builder.label :sexo %>
+    <%= builder.select :sexo, options_for_select([["Hombre", "H"], ["Mujer", "M"]],) %>
+  </div>
+
+  <div class="form-group">
+    <%= builder.label :telefono, 'Telefono' %>
+    <%= builder.telephone_field(:telefono) %>
   </div>
 
   <div class="field">
-    <%= form.label :porcentage_grasa %>
-    <%= form.text_field :porcentage_grasa %>
-  </div>
-  <!--  formato de la fecha: 2020-06-17 01:28:56-->
-  <div class="field">
-    <%= form.label :birthdate %>
-    <%#= form.date_select :birthdate %>
-    <%= form.date_select :birthdate, autocomplete: false %>
+    <%= builder.label :correo %>
+    <%= builder.text_field :correo %>
   </div>
 
+  <%= builder.fields_for :paciente do |f| %>
+    <div class="field">
+      <%= f.label :peso %>
+      <%= f.text_field :peso %>
+    </div>
+
+    <div class="field">
+      <%= f.label :talla %>
+      <%= f.text_field :talla %>
+    </div>
+
+    <div class="field">
+      <%= f.label :imc %>
+      <%= f.text_field :imc %>
+    </div>
+
+    <div class="field">
+      <%= f.label :porcentage_grasa %>
+      <%= f.text_field :porcentage_grasa %>
+    </div>
+    <!--  formato de la fecha: 2020-06-17 01:28:56-->
+    <div class="field">
+      <%= f.label :birthdate %>
+      <%#= form.date_select :birthdate %>
+      <%= f.date_select :birthdate, autocomplete: false %>
+    </div>
+
+
+  <% end %>
   <div class="actions">
-    <%= form.submit %>
+    <%= builder.submit %>
   </div>
 <% end %>

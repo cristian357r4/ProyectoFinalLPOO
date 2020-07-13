@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :personas
   resources :plansuplementos
   resources :suplementos
   resources :pacientes
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
   match 'registrarse', to: 'nutriologos#registrarse', via: :get, :as => :registrar_nutriologo
   match 'registrarse/nuevo', to: 'nutriologos#crear', via: :post, :as => :guardar_nutriologo
   match 'nutriologo/:id/editar', to: 'nutriologos#editar', via: :get, :as => :editar_nutriologo
-  match 'nutriologo/update', to: 'nutriologos#update', via: :post, :as => :update_nutriologo
+  match 'nutriologo/update', to: 'nutriologos#update', via: :patch, :as => :update_nutriologo
   #en caso de agregar mas con login, en el form o donde se login path se puede especificar el methodo que se usara
   # match 'login' => 'sessions#new', via: :get, :as => :crear_sesion
   get 'login', to: 'sessions#new' #login_path incluye hambos
@@ -36,9 +37,9 @@ Rails.application.routes.draw do
   # match 'logout' => 'sessions#destroy', via: :delete
   delete 'logout', to: 'sessions#destroy'
 
+  resources :biometias
+
   #seccion de paciente
-
-
   #match "/validar_usuario" => "persononas#validar_usuario", via: :post, :as => :validar_usuario
 
 

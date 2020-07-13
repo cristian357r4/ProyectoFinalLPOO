@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     else
       flash[:danger] = 'Usuario o contraseña Incorrecta'
       #pagina que va a pintar en la aplicacion
-      render 'new'
+      render root_path
 
     end
   end
