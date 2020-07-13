@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Paciente:</strong>
+  <%= @biometria.paciente.persona.nombre %>
+</p>
+
+<p>
+  <strong>Globulos rojos:</strong>
+  <%= @biometria.globulos_rojos %>
+</p>
+
+<p>
+  <strong>Globulos blancos:</strong>
+  <%= @biometria.globulos_blancos %>
+</p>
+
+<p>
+  <strong>Plaquetas:</strong>
+  <%= @biometria.plaquetas %>
+</p>
+
+<p>
+  <strong>hemoglobina:</strong>
+  <%= @biometria.hemoglobina %>
+</p>
+
+<p>
+  <strong>hematocritos:</strong>
+  <%= @biometria.hematocrito %>
+</p>
+
+
+<p>
+  <strong>Nuetrofilos:</strong>
+  <%= @biometria.neutrofilos %>
+</p>
+
+<%= link_to 'Editar', edit_biometria_path(@biometria) %> |
+<%= link_to 'Volver', biometrias_path %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :biometrias
   resources :personas
   resources :plansuplementos
   resources :suplementos
@@ -36,8 +37,6 @@ Rails.application.routes.draw do
   match 'login' => 'sessions#create', via: :post
   # match 'logout' => 'sessions#destroy', via: :delete
   delete 'logout', to: 'sessions#destroy'
-
-  resources :biometias
 
   #seccion de paciente
   #match "/validar_usuario" => "persononas#validar_usuario", via: :post, :as => :validar_usuario

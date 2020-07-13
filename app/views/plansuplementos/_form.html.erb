@@ -38,10 +38,10 @@
 
   <div class="field">
     <%= form.label :fin %>
-    <%= form.date_select :fin %>
+    <%= form.date_select :fin, start_year: Date.today.month, end_year: Date.today.month + 1 %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Registrar' %>
   </div>
 <% end %>

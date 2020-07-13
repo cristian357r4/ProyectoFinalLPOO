@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
   end
 
   create_table "actividades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "infousuario_id"
+    t.bigint "paciente_id"
     t.string "descripcion"
     t.string "frecuencia"
     t.string "duracion"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
     t.string "equipo_amateur"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["infousuario_id"], name: "index_actividades_fisica_on_infousuario_id", unique: true
+    t.index ["paciente_id"], name: "index_actividades_fisica_on_infousuario_id", unique: true
   end
 
   create_table "alimentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
   end
 
   create_table "antecedentes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "infousuario_id"
+    t.bigint "paciente_id"
     t.string "diabetes"
     t.string "obesidad"
     t.string "hipertrigliceridemia"
@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
     t.string "otro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["infousuario_id"], name: "index_antecedentes_paciente_on_infousuario_id", unique: true
+    t.index ["paciente_id"], name: "index_antecedentes_paciente_on_infousuario_id", unique: true
   end
 
   create_table "biometrias", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "infousuario_id"
+    t.bigint "paciente_id"
     t.string "globulos_rojos"
     t.string "globulos_blancos"
     t.string "plaquetas"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
     t.string "neutrofilos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["infousuario_id"], name: "index_biometrias_ematica_on_infousuario_id", unique: true
+    t.index ["paciente_id"], name: "index_biometrias_ematica_on_infousuario_id", unique: true
   end
 
   create_table "comidas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
   end
 
   create_table "consultas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.date "fecha_consulta"
   end
 
   create_table "dietas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -105,14 +104,14 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
   end
 
   create_table "estilos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "infousuario_id"
+    t.bigint "paciente_id"
     t.string "descripcion"
     t.string "frecuencia"
     t.string "cantidad"
     t.string "tiempo_consumo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["infousuario_id"], name: "index_estilos_vida_on_infousuario_id", unique: true
+    t.index ["paciente_id"], name: "index_estilos_vida_on_infousuario_id", unique: true
   end
 
   create_table "nutriologos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -151,16 +150,16 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
     t.bigint "suplemento_id"
     t.string "frecuencia"
     t.integer "cantidad"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.date "inicio"
     t.date "fin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["paciente_id"], name: "index_plansuplementos_on_paciente_id"
     t.index ["suplemento_id"], name: "index_plansuplementos_on_suplemento_id"
   end
 
   create_table "problemas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "infousuario_id"
+    t.bigint "paciente_id"
     t.string "diarrea"
     t.string "nauseas"
     t.string "obesidad"
@@ -169,11 +168,11 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
     t.string "vomito"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["infousuario_id"], name: "index_problemas_salud_on_infousuario_id", unique: true
+    t.index ["paciente_id"], name: "index_problemas_salud_on_infousuario_id", unique: true
   end
 
   create_table "quimicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "infousuario_id"
+    t.bigint "paciente_id"
     t.string "nitronitrogenourea"
     t.string "glocosa"
     t.string "creatina"
@@ -182,7 +181,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
     t.string "colesterol"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["infousuario_id"], name: "index_quimicas_sanguinea_on_infousuario_id", unique: true
+    t.index ["paciente_id"], name: "index_quimicas_sanguinea_on_infousuario_id", unique: true
   end
 
   create_table "signos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -214,19 +213,19 @@ ActiveRecord::Schema.define(version: 2020_07_13_033648) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "actividades", "pacientes", column: "infousuario_id"
-  add_foreign_key "antecedentes", "pacientes", column: "infousuario_id"
-  add_foreign_key "biometrias", "pacientes", column: "infousuario_id"
+  add_foreign_key "actividades", "pacientes"
+  add_foreign_key "antecedentes", "pacientes"
+  add_foreign_key "biometrias", "pacientes"
   add_foreign_key "dietas", "alimentos"
   add_foreign_key "dietas", "comidas"
   add_foreign_key "dietas", "pacientes"
   add_foreign_key "dietas", "subalimentos"
-  add_foreign_key "estilos", "pacientes", column: "infousuario_id"
+  add_foreign_key "estilos", "pacientes"
   add_foreign_key "nutriologos", "personas"
   add_foreign_key "pacientes", "personas"
   add_foreign_key "plansuplementos", "pacientes"
   add_foreign_key "plansuplementos", "suplementos"
-  add_foreign_key "problemas", "pacientes", column: "infousuario_id"
-  add_foreign_key "quimicas", "pacientes", column: "infousuario_id"
+  add_foreign_key "problemas", "pacientes"
+  add_foreign_key "quimicas", "pacientes"
   add_foreign_key "subalimentos", "alimentos"
 end

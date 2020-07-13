@@ -1,4 +1,4 @@
-<%= form_with(model: comida, local: true, class: 'form-group') do |form| %>
+<%= form_with(model: comida, local: true, class: 'form-group', validate: true) do |form| %>
   <% if comida.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comida.errors.count, "error") %> prohibited this comida from being saved:</h2>

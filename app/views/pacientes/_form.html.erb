@@ -63,8 +63,7 @@
     <!--  formato de la fecha: 2020-06-17 01:28:56-->
     <div class="field">
       <%= f.label :birthdate %>
-      <%#= form.date_select :birthdate %>
-      <%= f.date_select :birthdate, autocomplete: false %>
+      <%= f.date_select :birthdate, start_year: Date.today.year - 40, end_year: Date.today.year - 2, autocomplete: false %>
     </div>
 
 

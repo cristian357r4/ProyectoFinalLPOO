@@ -1,4 +1,4 @@
-<%= form_with(model: alimento, local: true) do |form| %>
+<%= form_with(model: alimento, local: true, validate: true) do |form| %>
   <% if alimento.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(alimento.errors.count, "error") %> prohibited this alimento from being saved:</h2>
