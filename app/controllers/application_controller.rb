@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:persona_id]
+      # puede ser posible solucion a el id paciente que no se muestra
       @current_persona ||= Persona.where(id: session[:persona_id]).first
       @nutriologo ||= Nutriologo.where(persona_id: session[:persona_id]).first
     end

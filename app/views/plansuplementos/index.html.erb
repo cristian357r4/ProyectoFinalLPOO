@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Plansuplementos</h1>
+<div class="tcontainer">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Paciente</th>
+      <th>Suplemento</th>
+      <th>Frecuencia</th>
+      <th>Cantidad</th>
+      <th>Inicio</th>
+      <th>Fin</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @plansuplementos.each do |plansuplemento| %>
+      <tr>
+        <td><%= plansuplemento.paciente.persona.nombre %></td>
+        <td><%= plansuplemento.suplemento.nombre %></td>
+        <td><%= plansuplemento.frecuencia %></td>
+        <td><%= plansuplemento.cantidad %></td>
+        <td><%= plansuplemento.inicio %></td>
+        <td><%= plansuplemento.fin %></td>
+        <td><%= link_to 'Ver', plansuplemento %></td>
+        <td><%= link_to 'Editar', edit_plansuplemento_path(plansuplemento) %></td>
+        <td><%= link_to 'Eliminar', plansuplemento, method: :delete, data: {confirm: 'Estas seguro?'} %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Plansuplemento', new_plansuplemento_path %>

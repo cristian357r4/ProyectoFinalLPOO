@@ -1,0 +1,47 @@
+<%= form_with(model: plansuplemento, local: true, validate: true) do |form| %>
+  <% if plansuplemento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plansuplemento.errors.count, "error") %> impiden que se guarde el registro:</h2>
+
+      <ul>
+        <% plansuplemento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :paciente_id %>
+    <%= form.select(:paciente_id, Paciente.joins(:persona).collect { |e| [e.persona.nombre, e.id] }, {include_blank: 'Seleccione un paciente'}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :suplemento_id %>
+    <%= form.select(:suplemento_id, Suplemento.all.collect { |e| [e.nombre, e.id] }, {include_blank: 'Elige un suplemento'}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :frecuencia %>
+    <%= form.text_field :frecuencia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cantidad %>
+    <%= form.number_field :cantidad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :inicio %>
+    <%= form.date_select :inicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fin %>
+    <%= form.date_select :fin %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

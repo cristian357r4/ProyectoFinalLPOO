@@ -30,4 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      plansuplemento:
+        paciente_id: "Paciente"
+    errors:
+      model:
+        plansuplemento:
+          attributes:
+            paciente_id: "es requerido"

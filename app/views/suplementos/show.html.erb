@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @suplemento.nombre %>
+</p>
+
+<p>
+  <strong>Imagen</strong>
+  <% if @suplemento.image.attached? %>
+    <%= image_tag(@suplemento.image, class: 'img-rounded', width: '200px', height: '200px') %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Marca:</strong>
+  <%= @suplemento.marca %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @suplemento.precio %>
+</p>
+
+<p>
+  <strong>Contenido:</strong>
+  <%= @suplemento.contenido %>
+</p>
+
+<p>
+  <strong>Informacion:</strong>
+  <%= @suplemento.informacion %>
+</p>
+
+<%= link_to 'Editar', edit_suplemento_path(@suplemento) %> |
+<%= link_to 'Volver', suplementos_path %>

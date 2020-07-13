@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Paciente:</strong>
+  <%= @plansuplemento.paciente.persona.nombre %>
+</p>
+
+<p>
+  <strong>Suplemento:</strong>
+  <%= @plansuplemento.suplemento.nombre %>
+</p>
+
+<p>
+  <strong>Frecuencia:</strong>
+  <%= @plansuplemento.frecuencia %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @plansuplemento.cantidad %>
+</p>
+
+<p>
+  <strong>Inicio:</strong>
+  <%= @plansuplemento.inicio %>
+</p>
+
+<p>
+  <strong>Fin:</strong>
+  <%= @plansuplemento.fin %>
+</p>
+
+<%= link_to 'Edit', edit_plansuplemento_path(@plansuplemento) %> |
+<%= link_to 'Back', plansuplementos_path %>

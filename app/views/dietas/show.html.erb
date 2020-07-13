@@ -27,8 +27,8 @@
 </p>
 
 <p>
-  <strong>Estado [Activo:1/Inactivo:2] : </strong>
-  <%= @dieta.estado %>
+  <strong>Estado: </strong>
+  <%= (@dieta.estado == 1) ? 'Activo' : 'Inactivo' %>
 </p>
 
 <%= link_to 'Editar', edit_dieta_path(@dieta) %> |

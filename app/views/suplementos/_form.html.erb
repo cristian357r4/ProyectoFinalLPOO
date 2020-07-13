@@ -1,0 +1,46 @@
+<%= form_with(model: suplemento, local: true) do |form| %>
+  <% if suplemento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(suplemento.errors.count, "error") %> prohibited this suplemento from being saved:</h2>
+
+      <ul>
+        <% suplemento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre, 'Nombre del Suplemento', role: 'label' %>
+    <%= form.text_field :nombre, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :marca, 'Marca', role: 'label' %>
+    <%= form.text_field :marca, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :precio, 'Precio', role: 'label' %>
+    <%= form.text_field :precio, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contenido, 'Comentarios', role: 'label' %>
+    <%= form.text_area :contenido, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :informacion, role: 'label' %>
+    <%= form.text_area :informacion, class: 'form-control' %>
+  </div>
+  <div class="filed">
+    <%= form.label :image, role: 'label' %>
+    <%= form.file_field :image, class: 'btn form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Crear', class: 'btn btn-success' %>
+  </div>
+<% end %>

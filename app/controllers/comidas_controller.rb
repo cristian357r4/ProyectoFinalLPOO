@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 class ComidasController < ApplicationController
   before_action :require_user
-  before_action :set_comida, only: %i[:show, :edit, :update, :destroy]
+  before_action :set_comida, only: %i[show edit update destroy]
 
   # GET /comidas
   # GET /comidas.json
@@ -60,6 +61,9 @@ class ComidasController < ApplicationController
       format.html { redirect_to comidas_url, notice: 'Registro eliminado.' }
       format.json { head :no_content }
     end
+  rescue ActiveRecord::StatementInvalid => e
+    flash[:danger] = 'No se puede eliminar el registro esta en uso'
+    redirect_to comidas_path
   end
 
   private

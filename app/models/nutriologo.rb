@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class Nutriologo < ApplicationRecord
   before_save { self.login = login.downcase }
   belongs_to :persona

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :plansuplementos
+  resources :suplementos
   resources :pacientes
   resources :dietas
   resources :comidas

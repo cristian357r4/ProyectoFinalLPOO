@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_063626) do
+ActiveRecord::Schema.define(version: 2020_07_13_033648) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -146,6 +146,19 @@ ActiveRecord::Schema.define(version: 2020_07_12_063626) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "plansuplementos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "paciente_id"
+    t.bigint "suplemento_id"
+    t.string "frecuencia"
+    t.integer "cantidad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "inicio"
+    t.date "fin"
+    t.index ["paciente_id"], name: "index_plansuplementos_on_paciente_id"
+    t.index ["suplemento_id"], name: "index_plansuplementos_on_suplemento_id"
+  end
+
   create_table "problemas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "infousuario_id"
     t.string "diarrea"
@@ -190,6 +203,16 @@ ActiveRecord::Schema.define(version: 2020_07_12_063626) do
     t.index ["alimento_id"], name: "fk_rails_1ff126d2e1"
   end
 
+  create_table "suplementos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "nombre"
+    t.string "marca"
+    t.float "precio"
+    t.text "contenido"
+    t.text "informacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "actividades", "pacientes", column: "infousuario_id"
   add_foreign_key "antecedentes", "pacientes", column: "infousuario_id"
@@ -201,6 +224,8 @@ ActiveRecord::Schema.define(version: 2020_07_12_063626) do
   add_foreign_key "estilos", "pacientes", column: "infousuario_id"
   add_foreign_key "nutriologos", "personas"
   add_foreign_key "pacientes", "personas"
+  add_foreign_key "plansuplementos", "pacientes"
+  add_foreign_key "plansuplementos", "suplementos"
   add_foreign_key "problemas", "pacientes", column: "infousuario_id"
   add_foreign_key "quimicas", "pacientes", column: "infousuario_id"
   add_foreign_key "subalimentos", "alimentos"

@@ -10,12 +10,12 @@
       </ul>
     </div>
   <% end %>
-
+  <!--Sigue mostrando el numero del paciente-->
   <div class="field">
     <%= form.label :paciente_id %>
-    <%= form.select(:paciente_id, Paciente.joins(:persona).collect { |e| [e.persona_id, e.id] }, {include_blank: 'Seleccione a un paciente'}) %>
+    <%= form.select(:paciente_id, Paciente.joins(:persona).collect { |e| [e.persona.nombre, e.id] }, {include_blank: 'Seleccione a un paciente'}) %>
   </div>
-
+  <!--  agregar filtado dinamico-->
   <div class="field">
     <%= form.label :comida_id %>
     <%= form.select(:comida_id, Comida.all.collect { |e| [e.descripcion, e.id] }, {include_blank: 'Elija el tiempo de Comida'}) %>
@@ -23,12 +23,14 @@
 
   <div class="field">
     <%= form.label :alimento_id %>
-    <%= form.select(:alimento_id, Alimento.all.collect { |e| [e.nombre, e.id] }, {include_blank: 'Elija el grupo de alimentos'}) %>
+    <%#= form.select(:alimento_id, Alimento.all.collect { |e| [e.nombre, e.id] }, {include_blank: 'Elija el grupo de alimentos'}) %>
+    <%= form.collection_select :alimento_id, Alimento.order(:nombre), :id, :nombre, include_blank: true %>
   </div>
 
   <div class="field">
     <%= form.label :subalimento_id %>
-    <%= form.select(:subalimento_id, Subalimento.all.collect { |e| [e.descripcion, e.id] }, {include_blank: 'Elija el subgrupo de alimentos'}) %>
+    <%#= form.select(:subalimento_id, Subalimento.all.collect { |e| [e.descripcion, e.id] }, {include_blank: 'Elija el subgrupo de alimentos'}) %>
+    <%= form.grouped_collection_select :subalimento_id, Alimento.order(:nombre), :subalimentos, :nombre, :id, :descripcion, include_blank: true %>
   </div>
 
   <div class="field">

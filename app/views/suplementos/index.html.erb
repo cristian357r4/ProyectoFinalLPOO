@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Suplementos</h1>
+
+<table class="tcontainer">
+  <thead class="table table-hover">
+  <tr>
+    <th>Nombre</th>
+    <th>Imagen</th>
+    <th>Marca</th>
+    <th>Precio</th>
+    <th>Contenido</th>
+    <th>Informacion</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @suplementos.each do |suplemento| %>
+    <% if suplemento.image.attached? %>
+      <tr>
+    <% else %>
+      <tr class="danger">
+    <% end %>
+    <td><%= link_to suplemento.nombre, suplemento %></td>
+    <td>
+      <% if suplemento.image.attached? %>
+        <%= image_tag(suplemento.image, class: 'img-rounded', width: '200px', height: '100px') %>
+      <% else %>
+        <%= link_to 'Agrege una imagen', edit_suplemento_path(suplemento) %>
+      <% end %>
+    </td>
+    <td><%= suplemento.marca %></td>
+    <td><%= suplemento.precio %></td>
+    <td><%= suplemento.contenido %></td>
+    <td><%= suplemento.informacion %></td>
+    <td><%= link_to 'Editar', edit_suplemento_path(suplemento), class: 'btn btn-info glyphicon-pencil' %></td>
+    <td><%= link_to 'Eliminar', suplemento, method: :delete, data: {confirm: 'Estas seguro?'}, class: 'btn btn-danger glyphicon glyphicon-trash' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Agregar', new_suplemento_path, class: 'btn btn-success' %>
