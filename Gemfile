@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.6'
 # bootstrap
 gem 'bootstrap-sass', '>= 3.4.1'
 #gema para el calendar
